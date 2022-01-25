@@ -1,21 +1,20 @@
 import react from 'react';
 import './styles/App.scss';
+import { Game } from './components/Game';
+import Cell from './components/Cell';
 
 function App() {
 
-  const player = react.useRef('x')
+  const [isX, setIsX] = react.useState(true)
+
+  const handleClick = () => {
+    //put value
+    //switch player
+  };
 
   return (
     <div className='board'>
-      <div className='cell'></div>
-      <div className='cell'></div>
-      <div className='cell'></div>
-      <div className='cell'></div>
-      <div className='cell'></div>
-      <div className='cell'></div>
-      <div className='cell'></div>
-      <div className='cell'></div>
-      <div className='cell'></div>
+      {Game.Board.map((cell) => <Cell key={cell.id} value={cell.value} onclick={cell.value ? null : handleClick} />)}
     </div>
   );
 }
