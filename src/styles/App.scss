@@ -1,25 +1,37 @@
+@import 'mixin';
+
 body {
   margin: 0;
+  background: linear-gradient(112.43deg, rgba(5, 0, 85, 0.84) 4%, rgba(103, 22, 168, 0.84) 43.73%, rgba(89, 5, 109, 0.89) 88.2%);
 }
 
-.board {
+.main {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(112.43deg, rgba(5, 0, 85, 0.84) 4%, rgba(103, 22, 168, 0.84) 43.73%, rgba(89, 5, 109, 0.89) 88.2%);
-  display: grid;
-  align-content: center;
+  display: flex;
   justify-content: center;
-  grid-template-columns: repeat(3, auto);
-  gap: 10px;
+  align-items: center;
 
-  & .cell {
-    width: 30vmin;
-    height:30vmin;
-    background-color: rgba(32, 3, 37);
-    border-radius: 40px;
-    &:hover {
-      opacity: 0.6;
+  &-board {
+    @include square(85vmin);
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-template-columns: repeat(3, calc((100% - 20px)/3));
+    grid-template-rows: repeat(3, calc((100% - 20px)/3));
+    gap: 10px;
+  
+    & .cell {
+      @include square(100%, 30px);
+      background-color: rgba(32, 3, 37);
       cursor: pointer;
     }
+  }
+}
+
+
+@include unfilled-cell {
+  &:hover {
+    opacity: 0.6;
   }
 }

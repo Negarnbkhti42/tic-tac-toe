@@ -1,5 +1,20 @@
-@mixin  min-width($size) {
-    @media screen and (min-width: $size){
-        @content
+@mixin min-width($size) {
+    @media screen and (min-width: $size) {
+        @content;
+    }
+}
+
+@mixin unfilled-cell {
+    .cell:not(.cell-x):not(.cell-o) {
+        @content;
+    }
+}
+
+@mixin square($size, $radius: false) {
+    width: $size;
+    height: $size;
+
+    @if $radius {
+        border-radius: $radius;
     }
 }

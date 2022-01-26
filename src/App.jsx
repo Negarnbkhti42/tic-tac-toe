@@ -17,10 +17,12 @@ function App() {
   };
 
   return (
-    <div className='board'>
-      {Game.Board.getCells().map((cell) =>
-        <Cell key={cell.getId()} value={cell.getValue()} onclick={cell.getValue() ? null : handleClick} />)}
-    </div>
+    <main className='main'>
+      <div className='main-board'>
+        {Game.Board.getCells().map((cell) =>
+          <Cell key={cell.getId()} value={cell.getValue()} onclick={cell.getValue() ? null : handleClick} />)}
+      </div>
+    </main>
   );
 }
 
