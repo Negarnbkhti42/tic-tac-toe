@@ -7,14 +7,19 @@ function App() {
 
   const [isX, setIsX] = react.useState(true)
 
+  const switchPlayer = () => {
+    setIsX(!isX);
+  };
+
   const handleClick = () => {
     //put value
-    //switch player
+    switchPlayer();
   };
 
   return (
     <div className='board'>
-      {Game.Board.map((cell) => <Cell key={cell.id} value={cell.value} onclick={cell.value ? null : handleClick} />)}
+      {Game.Board.getCells().map((cell) =>
+        <Cell key={cell.getId()} value={cell.getValue()} onclick={cell.getValue() ? null : handleClick} />)}
     </div>
   );
 }
