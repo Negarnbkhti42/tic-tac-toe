@@ -1,7 +1,7 @@
 import react from 'react';
-import './styles/App.scss';
-import { Game } from './components/Game';
-import Cell from './components/Cell';
+import '../styles/App.scss';
+import { Game } from '../components/Game';
+import Cell from '../components/cell';
 
 function App() {
 

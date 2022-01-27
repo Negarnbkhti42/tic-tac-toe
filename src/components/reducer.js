@@ -1,4 +1,27 @@
-import { ADD_MOVE, SET_PLAYERS, SET_WINNER, SWITCH_PLAYERS } from "./types";
+import { ADD_MOVE, SET_WINNER, SWITCH_PLAYERS, SET_PLAYERS } from './actions';
+
+export const addMove = (cellId) => ({
+    type: ADD_MOVE,
+    payload: cellId
+});
+
+export const switchPlayers = () => ({
+    type: SWITCH_PLAYERS
+});
+
+export const setWinner = (winner) => ({
+    type: SET_WINNER,
+    payload: winner
+});
+
+export const setPlayers = (player1, player2) => ({
+    type: SET_PLAYERS,
+    payload: {
+        player1,
+        player2
+    }
+});
+
 
 const initialState = {
     cells: {
@@ -15,22 +38,21 @@ const initialState = {
     },
     players: {
         player1: undefined,
-        player2: undefined
+        player2: undefined,
     },
     currentPlayer: null,
     winner: null
 };
 
-export const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
 
         case ADD_MOVE: {
-            let sign = state.currentPlayer === state.players.player1 ? 'x' : 'o';
             return {
                 ...state,
                 cells: {
                     ...state.cells,
-                    [action.payload]: sign
+                    [action.payload]: state.players.currentPlayer
                 }
             };
         }
@@ -38,14 +60,13 @@ export const reducer = (state = initialState, action) => {
         case SWITCH_PLAYERS:
             return {
                 ...state,
-                currentPlayer: state.currentPlayer === state.players.player1 ? state.players.player2 : state.players.player1
+                currentPlayer: state.currentPlayer === 'x' ? 'o' : 'x'
             };
 
         case SET_PLAYERS:
             return {
                 ...state,
-                players: action.payload,
-                currentPlayer: action.payload.player1
+                players: action.payload
             }
 
         case SET_WINNER:
@@ -58,3 +79,5 @@ export const reducer = (state = initialState, action) => {
             return state;
     }
 };
+
+export default reducer;
