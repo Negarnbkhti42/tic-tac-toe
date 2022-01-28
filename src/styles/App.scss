@@ -1,8 +1,9 @@
-@import 'mixin';
+@import 'mixins';
+@import 'variables';
 
 body {
   margin: 0;
-  background: linear-gradient(112.43deg, rgba(5, 0, 85, 0.84) 4%, rgba(103, 22, 168, 0.84) 43.73%, rgba(89, 5, 109, 0.89) 88.2%);
+  background: $background-color;
 }
 
 .main {
@@ -13,7 +14,7 @@ body {
   align-items: center;
 
   &-board {
-    @include square(85vmin);
+    @include square(60vmin);
     display: grid;
     align-content: center;
     justify-content: center;
@@ -22,8 +23,8 @@ body {
     gap: 10px;
   
     & .cell {
-      @include square(100%, 30px);
-      background-color: rgba(32, 3, 37);
+      @include square(100%, 30%);
+      background-color: $cell-color;
       cursor: pointer;
       position: relative;
 
@@ -32,14 +33,14 @@ body {
       align-items: center;
 
       @include filled-cell {
-        cursor: not-allowed;
+        cursor:default;
       }
 
       &.cell-x {
         &::before, &::after {
           content: '';
           position: absolute;
-          background-color: rgb(248, 83, 152);
+          background-color: $x-color;
           height: 80%;
           width: 15%;
           border-radius: 40px;
@@ -58,13 +59,13 @@ body {
         &::before, &::after {
           content: '';
           position: absolute;
-          background-color: rgb(252, 150, 82);
-          @include square(80%, 50%);
+          background-color: $o-color;
+          @include square(70%, 50%);
         }
 
         &::after {
           transform: scale(0.65);
-          background-color: rgba(32, 3, 37);
+          background-color: $cell-color;
         }
       }
     }
