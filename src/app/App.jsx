@@ -2,17 +2,20 @@ import react from 'react';
 import '../styles/App.scss';
 import Cell from '../components/cell';
 import { addMove, setWinner, switchPlayers } from '../components/reducer';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-function App(props) {
+function App() {
 
-  const {state, dispatch} = props;
+  const dispatch = useDispatch();
+  const board = useSelector(state => state.board);
 
   react.useEffect(() => {
-    dispatch(setWinner(state.board));
-  }, [state.board]);
+    dispatch(setWinner(board));
+  }, [board]);
 
   react.useEffect(() => {
-    console.log(state);
+    console.log(board);
   });
 
   const handleClick = (event, cellId) => {
@@ -24,8 +27,8 @@ function App(props) {
     <main className='main'>
       <div className='main-board'>
         {
-          Object.keys(state.board).map((id) => 
-          <Cell key={id} value={state.board[id]} onclick={(e) => handleClick(e, id)} />
+          Object.keys(board).map((id) => 
+          <Cell key={id} value={board[id]} onclick={(e) => handleClick(e, id)} />
           )
         }
       </div>
