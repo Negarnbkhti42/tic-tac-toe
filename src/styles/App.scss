@@ -25,9 +25,47 @@ body {
       @include square(100%, 30px);
       background-color: rgba(32, 3, 37);
       cursor: pointer;
+      position: relative;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       @include filled-cell {
         cursor: not-allowed;
+      }
+
+      &.cell-x {
+        &::before, &::after {
+          content: '';
+          position: absolute;
+          background-color: rgb(248, 83, 152);
+          height: 80%;
+          width: 15%;
+          border-radius: 40px;
+        }
+
+        &::before {
+          transform: rotate(45deg);
+        }
+
+        &::after {
+          transform: rotate(-45deg);
+        }
+      }
+
+      &.cell-o {
+        &::before, &::after {
+          content: '';
+          position: absolute;
+          background-color: rgb(252, 150, 82);
+          @include square(80%, 50%);
+        }
+
+        &::after {
+          transform: scale(0.65);
+          background-color: rgba(32, 3, 37);
+        }
       }
     }
   }
