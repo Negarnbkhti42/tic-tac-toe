@@ -25,6 +25,10 @@ body {
       @include square(100%, 30px);
       background-color: rgba(32, 3, 37);
       cursor: pointer;
+
+      @include filled-cell {
+        cursor: not-allowed;
+      }
     }
   }
 }

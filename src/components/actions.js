@@ -1,4 +1,4 @@
-export const ADD_MOVE = 'cells/addMove';
+export const ADD_MOVE = 'board/addMove';
 export const SWITCH_PLAYERS = 'currentPlayer/switchPlayers';
 export const SET_CURRENT_PLAYER = 'currentPlayer/setCurrentPlayer';
 export const SET_PLAYERS = 'players/setPlayer';

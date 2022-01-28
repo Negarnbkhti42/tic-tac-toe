@@ -1,26 +1,33 @@
 import react from 'react';
 import '../styles/App.scss';
-import { Game } from '../components/Game';
 import Cell from '../components/cell';
+import { addMove, setWinner, switchPlayers } from '../components/reducer';
 
-function App() {
+function App(props) {
 
-  const [isX, setIsX] = react.useState(true)
+  const {state, dispatch} = props;
 
-  const switchPlayer = () => {
-    setIsX(!isX);
-  };
+  react.useEffect(() => {
+    dispatch(setWinner(state.board));
+  }, [state.board]);
 
-  const handleClick = () => {
-    //put value
-    switchPlayer();
-  };
+  react.useEffect(() => {
+    console.log(state);
+  });
+
+  const handleClick = (event, cellId) => {
+    dispatch(addMove(cellId))
+    dispatch(switchPlayers())
+  }
 
   return (
     <main className='main'>
       <div className='main-board'>
-        {Game.Board.getCells().map((cell) =>
-          <Cell key={cell.getId()} value={cell.getValue()} onclick={cell.getValue() ? null : handleClick} />)}
+        {
+          Object.keys(state.board).map((id) => 
+          <Cell key={id} value={state.board[id]} onclick={(e) => handleClick(e, id)} />
+          )
+        }
       </div>
     </main>
   );

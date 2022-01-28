@@ -10,6 +10,12 @@
     }
 }
 
+@mixin filled-cell {
+    &.cell-x, &.cell-o {
+        @content
+    }
+}
+
 @mixin square($size, $radius: false) {
     width: $size;
     height: $size;

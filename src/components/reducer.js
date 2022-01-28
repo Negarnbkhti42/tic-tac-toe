@@ -1,4 +1,5 @@
 import { ADD_MOVE, SET_WINNER, SWITCH_PLAYERS, SET_PLAYERS } from './actions';
+import { checkWin } from './Game.js';
 
 export const addMove = (cellId) => ({
     type: ADD_MOVE,
@@ -9,10 +10,14 @@ export const switchPlayers = () => ({
     type: SWITCH_PLAYERS
 });
 
-export const setWinner = (winner) => ({
-    type: SET_WINNER,
-    payload: winner
-});
+export const setWinner = (board) => {
+    let winner = checkWin(board);
+
+    return {
+        type: SET_WINNER,
+        payload: winner
+    };
+};
 
 export const setPlayers = (player1, player2) => ({
     type: SET_PLAYERS,
@@ -24,7 +29,7 @@ export const setPlayers = (player1, player2) => ({
 
 
 const initialState = {
-    cells: {
+    board: {
         0: '',
         1: '',
         2: '',
@@ -37,10 +42,10 @@ const initialState = {
         9: ''
     },
     players: {
-        player1: undefined,
-        player2: undefined,
+        player1: 'human',
+        player2: 'human',
     },
-    currentPlayer: null,
+    currentPlayer: 'x',
     winner: null
 };
 
@@ -50,9 +55,9 @@ const reducer = (state = initialState, action) => {
         case ADD_MOVE: {
             return {
                 ...state,
-                cells: {
-                    ...state.cells,
-                    [action.payload]: state.players.currentPlayer
+                board: {
+                    ...state.board,
+                    [action.payload]: state.currentPlayer
                 }
             };
         }
