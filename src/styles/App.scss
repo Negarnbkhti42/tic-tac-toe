@@ -1,8 +1,11 @@
 @import 'mixins';
 @import 'variables';
 
+@import './menu.scss';
+
 body {
   margin: 0;
+  padding: 0;
   background: $background-color;
 }
 

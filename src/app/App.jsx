@@ -4,6 +4,7 @@ import Cell from '../components/cell';
 import { addMove, setWinner, switchPlayers } from '../components/reducer';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import Menu from '../components/menu';
 
 function App() {
 
@@ -28,10 +29,11 @@ function App() {
       <div className='main-board'>
         {
           Object.keys(board).map((id) => 
-          <Cell key={id} value={board[id]} onclick={(e) => handleClick(e, id)} />
+          <Cell key={id} value={board[id]} onClick={(e) => handleClick(e, id)} />
           )
         }
       </div>
+      <Menu />
     </main>
   );
 }

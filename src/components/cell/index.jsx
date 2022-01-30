@@ -1,16 +1,22 @@
 import PropTypes from 'prop-types';
 
 function Cell({
-    onclick,
+    onClick,
     value
 }) {
+
+    const handleClick = () => {
+        if(!value) {
+            onClick();
+        }
+    }
 
     const getClass = () => {
         return `cell ${value ? `cell-${value}`: ``}`
     };
 
     return(
-        <div className={getClass()} onClick={onclick}></div>
+        <div className={getClass()} onClick={handleClick}></div>
     )
 }
 

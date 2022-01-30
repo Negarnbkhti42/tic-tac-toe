@@ -1,0 +1,26 @@
+.dialog {
+    position: absolute;
+    top: 110vh;
+    &[open] {
+        animation: show 1s ease normal;
+    }
+
+    &_closed {
+        animation: hide 1s ease normal;
+    }
+}
+
+@keyframes show{
+    from {
+        transform: translateY(500%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes hide{
+    to {
+        transform: translateY(-100%);
+    }
+}
