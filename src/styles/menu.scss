@@ -1,26 +1,26 @@
-.dialog {
-    position: absolute;
-    top: 110vh;
-    &[open] {
-        animation: show 1s ease normal;
+@import 'variables';
+
+.menu {
+    &-container {
+        position:  absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.61);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 
-    &_closed {
-        animation: hide 1s ease normal;
+    &-closed {
+        display:  none;
     }
-}
 
-@keyframes show{
-    from {
-        transform: translateY(500%);
-    }
-    to {
-        transform: translateY(0%);
-    }
-}
-
-@keyframes hide{
-    to {
-        transform: translateY(-100%);
+    &-h1 {
+        font-size: 12vw;
+        color: $o-color;
     }
 }

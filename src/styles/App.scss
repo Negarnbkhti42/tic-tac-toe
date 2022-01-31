@@ -6,18 +6,18 @@
 body {
   margin: 0;
   padding: 0;
-  background: $background-color;
 }
 
 .main {
   width: 100vw;
   height: 100vh;
+  background: $background-color;
   display: flex;
   justify-content: center;
   align-items: center;
 
   &-board {
-    @include square(60vmin);
+    @include square(80vmin);
     display: grid;
     align-content: center;
     justify-content: center;
@@ -79,5 +79,11 @@ body {
 @include unfilled-cell {
   &:hover {
     opacity: 0.6;
+  }
+}
+
+@include min-width(420px) {
+  .main-board {
+    @include square(70vmin);
   }
 }

@@ -1,4 +1,4 @@
-import { ADD_MOVE, SET_WINNER, SWITCH_PLAYERS, SET_PLAYERS } from './actions';
+import { ADD_MOVE, SET_WINNER, SWITCH_PLAYERS, SET_PLAYERS, CHANGE_GAME_STATE } from './actions';
 import { checkWin } from './Game.js';
 
 export const addMove = (cellId) => ({
@@ -27,6 +27,11 @@ export const setPlayers = (player1, player2) => ({
     }
 });
 
+export const changeGameState = (newState) => ({
+    type: CHANGE_GAME_STATE,
+    payload: newState
+});
+
 
 const initialState = {
     board: {
@@ -46,7 +51,8 @@ const initialState = {
         player2: 'human',
     },
     currentPlayer: 'x',
-    winner: null
+    winner: null,
+    gameState: 'settings'
 };
 
 const reducer = (state = initialState, action) => {
@@ -78,6 +84,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 winner: action.payload
+            }
+
+        case CHANGE_GAME_STATE:
+            return {
+                ...state,
+                gameState: action.payload
             }
 
         default:

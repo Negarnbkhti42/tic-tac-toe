@@ -15,10 +15,6 @@ function App() {
     dispatch(setWinner(board));
   }, [board]);
 
-  react.useEffect(() => {
-    console.log(board);
-  });
-
   const handleClick = (event, cellId) => {
     dispatch(addMove(cellId))
     dispatch(switchPlayers())
