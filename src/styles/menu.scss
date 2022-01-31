@@ -1,8 +1,8 @@
-@import 'variables';
+@import "variables";
 
 .menu {
     &-container {
-        position:  absolute;
+        position: absolute;
         top: 0;
         left: 0;
         width: 100vw;
@@ -13,10 +13,12 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-    }
 
-    &-closed {
-        display:  none;
+        &_game {
+            &-in-progress {
+                display: none;
+            }
+        }
     }
 
     &-h1 {

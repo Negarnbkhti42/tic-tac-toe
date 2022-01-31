@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { gameInProgress, settings } from "../constants";
 
-import { changeGameState } from '../reducer';
+import { startNewGame } from '../reducer';
 
 function Menu() {
 
@@ -10,15 +11,15 @@ function Menu() {
     const gameState = useSelector(state => state.gameState);
 
     const startGame = () => {
-        dispatch(changeGameState('in-progress'));
+        dispatch(startNewGame(gameInProgress));
     };
 
-    return (
-        <div className={`menu-container ${gameState === 'in-progress' ? 'menu-closed' : ''}`}>
-            <h1 className="menu-h1">TIC-TAC-TOE</h1>
-            <button type="button" onClick={startGame}>start game</button>
-        </div>
-    )
+    const settingMenu = <><h1 className="menu-h1">TIC-TAC-TOE</h1>
+        <button type="button" onClick={startGame}>start game</button></>;
+
+    return <div className={`menu-container menu-container_game-${gameState}`}>
+        {gameState === settings ? settingMenu : null}
+    </div>
 }
 
 export default Menu;

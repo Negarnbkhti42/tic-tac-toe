@@ -5,6 +5,7 @@ import { addMove, setWinner, switchPlayers } from '../components/reducer';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import Menu from '../components/menu';
+import { checkWin } from '../components/Game';
 
 function App() {
 
@@ -12,12 +13,18 @@ function App() {
   const board = useSelector(state => state.board);
 
   react.useEffect(() => {
-    dispatch(setWinner(board));
+    let winner = checkWin(board);
+    
+    if(winner) {
+      dispatch(setWinner(winner));
+      
+    } else {
+      dispatch(switchPlayers())
+    }
   }, [board]);
 
   const handleClick = (event, cellId) => {
     dispatch(addMove(cellId))
-    dispatch(switchPlayers())
   }
 
   return (
