@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 .menu {
     &-container {
@@ -26,5 +27,13 @@
     &-h1 {
         font-size: 12vw;
         color: $o-color;
+    }
+}
+
+@include min-width(420px) {
+    .menu {
+        &-h1 {
+            font-size: 7vw;
+        }
     }
 }

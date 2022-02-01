@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { gameFinished, gameInProgress, settings } from "../constants";
 
-import { startNewGame } from '../reducer';
+import { clearBoard, setCurrentPlayer, setWinner, startNewGame } from '../reducer';
 
 function Menu() {
 
@@ -15,10 +15,18 @@ function Menu() {
         dispatch(startNewGame(gameInProgress));
     };
 
+    const restartGame = () => {
+        dispatch(clearBoard());
+        dispatch(setWinner(null));
+        dispatch(setCurrentPlayer('x'));
+        dispatch(startNewGame());
+    }
+
     const settingMenu = <><h1 className="menu-h1">TIC-TAC-TOE</h1>
         <button type="button" onClick={startGame}>start game</button></>;
 
-    const endGameMenu = <><h2>player {winner} has won the game</h2></>
+    const endGameMenu = <><h2>player {winner} has won the game</h2>
+        <button type="button" onClick={restartGame}>restart game</button></>
 
     return <div className={`menu-container menu-container_game-${gameState}`}>
         {gameState === settings ? settingMenu : gameState === gameFinished ? endGameMenu : null}
