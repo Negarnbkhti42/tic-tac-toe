@@ -51,10 +51,12 @@ body {
 
         &::before {
           transform: rotate(45deg);
+          animation: show-sign 0.3s ease;
         }
 
         &::after {
           transform: rotate(-45deg);
+          animation: show-sign 0.3s ease;
         }
       }
 
@@ -64,6 +66,7 @@ body {
           position: absolute;
           background-color: $o-color;
           @include square(70%, 50%);
+          animation: show-sign 0.3s ease;
         }
 
         &::after {
@@ -85,5 +88,15 @@ body {
 @include min-width(420px) {
   .main-board {
     @include square(70vmin);
+  }
+}
+
+@keyframes show-sign {
+  from {
+    transform: scale(0.5);
+  }
+
+  to {
+    transform: scale(1);
   }
 }

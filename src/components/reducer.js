@@ -1,6 +1,5 @@
-import { ADD_MOVE, SET_WINNER, SWITCH_PLAYERS, SET_PLAYERS, START_NEW_GAME } from './actions';
-import { gameInProgress, settings } from './constants';
-import { checkWin } from './Game.js';
+import { ADD_MOVE, SET_WINNER, SWITCH_PLAYERS, SET_PLAYERS, START_NEW_GAME, END_GAME } from './actions';
+import { gameFinished, gameInProgress, settings } from './constants';
 
 export const addMove = (cellId) => ({
     type: ADD_MOVE,
@@ -30,6 +29,11 @@ export const setPlayers = (player1, player2) => ({
 export const startNewGame = () => ({
     type: START_NEW_GAME,
     payload: gameInProgress
+});
+
+export const endGame = () => ({
+    type: END_GAME,
+    payload: gameFinished
 });
 
 
@@ -87,6 +91,12 @@ const reducer = (state = initialState, action) => {
             }
 
         case START_NEW_GAME:
+            return {
+                ...state,
+                gameState: action.payload
+            }
+
+        case END_GAME:
             return {
                 ...state,
                 gameState: action.payload
