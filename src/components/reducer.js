@@ -1,4 +1,11 @@
-import { ADD_MOVE, SET_WINNER, SWITCH_PLAYERS, SET_PLAYERS, START_NEW_GAME, END_GAME, CLEAR_BOARD, SET_CURRENT_PLAYER } from './actions';
+import { ADD_MOVE, 
+    SET_WINNER, 
+    SWITCH_PLAYERS, 
+    SET_PLAYERS, 
+    START_NEW_GAME, 
+    END_GAME, 
+    CLEAR_BOARD, 
+    SET_CURRENT_PLAYER } from './actions';
 import { gameFinished, gameInProgress, settings } from './constants';
 
 export const addMove = (cellId) => ({

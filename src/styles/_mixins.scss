@@ -1,3 +1,6 @@
+@import 'variables';
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
 @mixin min-width($size) {
     @media screen and (min-width: $size) {
         @content;
@@ -23,4 +26,15 @@
     @if $radius {
         border-radius: $radius;
     }
+}
+
+@mixin default-button-style {
+    border: none;
+    font-family: 'kanit', sans-serif;
+    border-radius: 50px;
+    background: #FFBD49;
+    width: 10em;
+    height: 3em;
+
+    font-size: 25px;
 }
