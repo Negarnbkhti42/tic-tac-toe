@@ -50,13 +50,13 @@ body {
         }
 
         &::before {
+          animation: show-x-sign-before 0.3s ease;
           transform: rotate(45deg);
-          animation: show-sign 0.3s ease;
         }
 
         &::after {
+          animation: show-x-sign-after 0.3s ease;
           transform: rotate(-45deg);
-          animation: show-sign 0.3s ease;
         }
       }
 
@@ -66,7 +66,7 @@ body {
           position: absolute;
           background-color: $o-color;
           @include square(70%, 50%);
-          animation: show-sign 0.3s ease;
+          animation: show-o-sign 0.3s ease;
         }
 
         &::after {
@@ -91,7 +91,27 @@ body {
   }
 }
 
-@keyframes show-sign {
+@keyframes show-x-sign-before {
+  from {
+    transform: rotate(45deg) scale(0.5);
+  }
+
+  to {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+@keyframes show-x-sign-after {
+  from {
+    transform: rotate(-45deg) scale(0.5);
+  }
+
+  to {
+    transform: rotate(-45deg) scale(1);
+  }
+}
+
+@keyframes show-o-sign {
   from {
     transform: scale(0.5);
   }
