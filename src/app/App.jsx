@@ -34,6 +34,7 @@ function App() {
 
   return (
     <main className='main'>
+      <h3 className='main-h3'>it's player {currentPlayer}'s turn</h3>
       <div className='main-board'>
         {
           Object.keys(board).map((id) => 
